@@ -49,14 +49,15 @@
       </div>
 
       <p class="pool-info" id="pool-info"></p>
-      <button class="primary" id="btn-start">Byrja leik</button>
+      <button class="primary" id="btn-start">Byrja leik <kbd>bilslá</kbd></button>
 
       <div class="rules">
         <h3>Reglur</h3>
         <ol>
+          <li>Allt er gert með <kbd>bilslá</kbd>: byrja, birta orð, fela það, svara og fara í næsta orð.</li>
           <li>Ýttu á <kbd>bilslá</kbd> til að birta orðið – þá fer klukkan af stað.</li>
           <li>Ýttu á <kbd>bilslá</kbd> eða <kbd>örvatakka</kbd> til að fela það – klukkan stoppar.</li>
-          <li>Skrifaðu orðið og ýttu á <kbd>Enter</kbd>.</li>
+          <li>Skrifaðu orðið og ýttu á <kbd>bilslá</kbd> til að svara. Næsta <kbd>bilslá</kbd> birtir strax næsta orð.</li>
           <li>Rétt stafsett orð gefur stig: því styttri tíma sem þú horfðir, því fleiri stig.</li>
         </ol>
       </div>
@@ -79,13 +80,13 @@
           <p class="stage-msg">Hvaða orð sástu?</p>
           <form id="answer-form" autocomplete="off">
             <input id="answer" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" lang="is">
-            <button class="primary" type="submit">Svara <kbd>Enter</kbd></button>
+            <button class="primary" type="submit">Svara <kbd>bilslá</kbd></button>
           </form>
         </div>
         <div id="stage-result" class="hidden">
           <p id="result-verdict" class="verdict"></p>
           <p id="result-detail" class="detail"></p>
-          <button class="primary" id="btn-next">Næsta orð <kbd>Enter</kbd></button>
+          <button class="primary" id="btn-next">Næsta orð <kbd>bilslá</kbd></button>
         </div>
       </div>
 

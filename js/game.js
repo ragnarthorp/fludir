@@ -202,7 +202,7 @@ function hideWord() {
 }
 
 function submitAnswer(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   if (game.phase !== "input") return;
   const typed = $("answer").value;
   if (!typed.trim()) return;
@@ -227,7 +227,11 @@ function submitAnswer(e) {
 function goNext() {
   if (game.phase !== "result") return;
   game.index++;
-  nextRound();
+  if (game.index >= game.words.length) return endGame();
+  // Beint í næsta orð – enginn biðskjár á milli
+  updateStatus();
+  game.phase = "ready";
+  showWord();
 }
 
 function endGame() {
@@ -279,9 +283,17 @@ document.addEventListener("keydown", (e) => {
   } else if (game.phase === "showing" && HIDE_KEYS.has(e.key)) {
     e.preventDefault();
     hideWord();
+  } else if (game.phase === "input" && e.key === " ") {
+    // Bilslá skráir svarið inn (orðin innihalda engin bil)
+    e.preventDefault();
+    submitAnswer();
   } else if (game.phase === "result" && (e.key === "Enter" || e.key === " ")) {
     e.preventDefault();
     goNext();
+  } else if (game.phase === "idle" && e.key === " " && !$("screen-setup").classList.contains("hidden")
+             && !e.target.closest("input, select, summary")) {
+    e.preventDefault();
+    if (!$("btn-start").disabled) startGame();
   }
 });
 
@@ -306,6 +318,13 @@ function init() {
   $("btn-show").addEventListener("click", showWord);
   $("btn-hide").addEventListener("click", hideWord);
   $("answer-form").addEventListener("submit", submitAnswer);
+  // Snertilyklaborð senda ekki alltaf keydown fyrir bil – gríp bilið hér líka
+  $("answer").addEventListener("input", (e) => {
+    if (e.target.value.includes(" ")) {
+      e.target.value = e.target.value.replace(/\s+/g, "");
+      submitAnswer();
+    }
+  });
   $("btn-next").addEventListener("click", goNext);
   $("btn-quit").addEventListener("click", () => {
     game.phase = "idle";
