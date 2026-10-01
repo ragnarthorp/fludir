@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orðaleikur</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>Orðaleikur</h1>
+      <p class="tagline">Sjáðu orðið, feldu það og skrifaðu það rétt – sem hraðast.</p>
+    </header>
+
+    <!-- Upphafsskjár: stillingar -->
+    <section id="screen-setup" class="screen">
+      <h2>Veldu erfiðleikastig</h2>
+      <p class="hint">Orðin eru úr MÍNO-tíðnilistanum. Því hærra tíðnisæti, því sjaldgæfara er orðið.</p>
+
+      <div class="levels" id="levels"></div>
+
+      <details class="custom">
+        <summary>Sérsniðið bil</summary>
+        <div class="row">
+          <label>Frá sæti <input type="number" id="rank-from" min="1" value="1"></label>
+          <label>Til sætis <input type="number" id="rank-to" min="1" value="500"></label>
+        </div>
+      </details>
+
+      <fieldset class="pos">
+        <legend>Orðflokkar</legend>
+        <label><input type="checkbox" value="n" checked> nafnorð</label>
+        <label><input type="checkbox" value="s" checked> sagnir</label>
+        <label><input type="checkbox" value="l" checked> lýsingarorð</label>
+        <label><input type="checkbox" value="a" checked> atviksorð</label>
+        <label><input type="checkbox" value="c" checked> samtengingar</label>
+      </fieldset>
+
+      <div class="row">
+        <label>Fjöldi orða
+          <select id="round-count">
+            <option>5</option>
+            <option selected>10</option>
+            <option>20</option>
+            <option>30</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="pool-info" id="pool-info"></p>
+      <button class="primary" id="btn-start">Byrja leik</button>
+
+      <div class="rules">
+        <h3>Reglur</h3>
+        <ol>
+          <li>Ýttu á <kbd>bilslá</kbd> til að birta orðið – þá fer klukkan af stað.</li>
+          <li>Ýttu á <kbd>bilslá</kbd> eða <kbd>örvatakka</kbd> til að fela það – klukkan stoppar.</li>
+          <li>Skrifaðu orðið og ýttu á <kbd>Enter</kbd>.</li>
+          <li>Rétt stafsett orð gefur stig: því styttri tíma sem þú horfðir, því fleiri stig.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Leikjaskjár -->
+    <section id="screen-game" class="screen hidden">
+      <div class="status">
+        <span id="round-label"></span>
+        <span id="score-label"></span>
+      </div>
+
+      <div class="stage" id="stage">
+        <div id="stage-ready" class="stage-msg">
+          <p>Tilbúin(n)?</p>
+          <button class="primary" id="btn-show">Sýna orð <kbd>bilslá</kbd></button>
+        </div>
+        <div id="stage-word" class="word hidden"></div>
+        <div id="stage-input" class="hidden">
+          <p class="stage-msg">Hvaða orð sástu?</p>
+          <form id="answer-form" autocomplete="off">
+            <input id="answer" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" lang="is">
+            <button class="primary" type="submit">Svara <kbd>Enter</kbd></button>
+          </form>
+        </div>
+        <div id="stage-result" class="hidden">
+          <p id="result-verdict" class="verdict"></p>
+          <p id="result-detail" class="detail"></p>
+          <button class="primary" id="btn-next">Næsta orð <kbd>Enter</kbd></button>
+        </div>
+      </div>
+
+      <button class="hide-btn hidden" id="btn-hide">Fela orð</button>
+      <button class="link" id="btn-quit">Hætta</button>
+    </section>
+
+    <!-- Lokaskjár -->
+    <section id="screen-end" class="screen hidden">
+      <h2>Leik lokið</h2>
+      <p class="final-score" id="final-score"></p>
+      <p id="final-best" class="hint"></p>
+      <table class="summary">
+        <thead><tr><th>Orð</th><th>Þú skrifaðir</th><th>Tími</th><th>Stig</th></tr></thead>
+        <tbody id="summary-body"></tbody>
+      </table>
+      <div class="row center">
+        <button class="primary" id="btn-again">Spila aftur</button>
+        <button id="btn-menu">Stillingar</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/words.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
