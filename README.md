@@ -30,3 +30,24 @@ python3 scripts/build_words.py
 
 Skriftan sleppir skammstöfunum, rómverskum tölum, stökum bókstöfum og liðum
 á borð við „a-liður“.
+
+# Umferðarmerkin
+
+Forrit í `umferdarmerki/` til að læra íslensku umferðarmerkin, bæði flokkana og
+hvað hvert merki þýðir. Opnaðu `umferdarmerki/index.html` í vafra.
+
+- **Læra:** flokkarnir 100–900 samkvæmt reglugerð nr. 250/2024 (hlutverk, útlit og
+  minnisregla) og öll merki hvers flokks. Smelltu á merki til að lesa merkinguna.
+- **Leikir:**
+  - *Hvaða flokkur?* – sjáðu merki og veldu flokkinn.
+  - *Hvað þýðir merkið?* – sjáðu merki og veldu rétta merkingu af fjórum.
+  - *Finndu merkið* – sjáðu heiti og veldu rétta merkið af fjórum.
+  - *Blandað próf* – allt í bland.
+
+  Hægt er að velja hvaða flokkar eru með og fjölda spurninga. Í lokin sérðu
+  villurnar með skýringum og getur æft þær sérstaklega. Lyklaborð: <kbd>1</kbd>–<kbd>9</kbd>
+  velja svar, <kbd>Enter</kbd> næsta spurning. Besti árangur er geymdur í `localStorage`.
+
+Merkin eru teiknuð sem SVG í `umferdarmerki/merki.js` (einfaldaðar myndir). Þar er
+líka auðvelt að bæta við merkjum eða leiðrétta lýsingar. Merkjanúmer (`nr`) eru
+aðeins skráð þar sem þau hafa verið staðfest.

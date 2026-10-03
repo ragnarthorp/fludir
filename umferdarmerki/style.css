@@ -1,0 +1,265 @@
+:root {
+  --bg: #f6f4ef;
+  --card: #ffffff;
+  --text: #1d2a33;
+  --muted: #5f6b73;
+  --accent: #1f6f8b;
+  --accent-text: #ffffff;
+  --border: #d9d5cc;
+  --ok: #2e7d4f;
+  --ok-bg: #e5f3ea;
+  --bad: #b3261e;
+  --bad-bg: #fbe9e7;
+  --sign-bg: #eef0f2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12181c;
+    --card: #1b2329;
+    --text: #e6ebee;
+    --muted: #9aa7af;
+    --accent: #4fb3d4;
+    --accent-text: #0b1418;
+    --border: #2d3840;
+    --ok: #6fcf97;
+    --ok-bg: #16301f;
+    --bad: #f28b82;
+    --bad-bg: #3a1a18;
+    --sign-bg: #263038;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.top h1 { margin: 0; font-size: 1.8rem; }
+.tagline { margin: 4px 0 16px; color: var(--muted); }
+
+.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tabs button { flex: 1; }
+.tabs button.active {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.screen {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.hidden { display: none !important; }
+
+h2 { margin-top: 0; }
+.hint { color: var(--muted); font-size: 0.95rem; }
+.small { font-size: 0.85rem; margin-top: 24px; }
+
+button {
+  font: inherit;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button.primary {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+button.link {
+  background: none;
+  border: none;
+  color: var(--muted);
+  text-decoration: underline;
+  padding: 8px 0;
+  margin-top: 16px;
+}
+
+kbd {
+  font-size: 0.75em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  opacity: 0.75;
+  margin-left: 6px;
+}
+
+select { font: inherit; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 16px 0; }
+.row.center { justify-content: center; }
+
+svg { display: block; width: 100%; height: 100%; }
+
+/* ---------- Læra ---------- */
+
+.flokkar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.flokkur-hnappur {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  padding: 10px;
+}
+.flokkur-hnappur.active { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.flokkur-hnappur .tn { width: 40px; height: 40px; flex: none; }
+.flokkur-hnappur .nr { font-size: 0.8rem; color: var(--muted); display: block; }
+.flokkur-hnappur .hn { font-weight: 600; font-size: 0.92rem; line-height: 1.2; display: block; overflow-wrap: anywhere; }
+.flokkur-hnappur > span:last-child { min-width: 0; }
+
+.flokkur-lysing {
+  border-left: 4px solid var(--accent);
+  padding: 4px 0 4px 14px;
+  margin: 8px 0 16px;
+}
+.flokkur-lysing h3 { margin: 0 0 6px; }
+.flokkur-lysing p { margin: 4px 0; }
+.flokkur-lysing .lbl { font-weight: 600; }
+
+.merkjanet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.merki-spjald {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.merki-spjald .mynd { width: 72px; height: 72px; }
+.merki-spjald .nr { font-size: 0.75rem; color: var(--muted); }
+
+dialog {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 24px;
+  text-align: center;
+}
+dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
+.nanar-merki { width: 160px; height: 160px; margin: 0 auto 8px; }
+.nanar-flokkur { color: var(--muted); margin: 0; font-size: 0.9rem; }
+dialog h3 { margin: 4px 0 8px; }
+
+/* ---------- Leikjaval ---------- */
+
+.leikir {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.leikur {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  padding: 14px;
+}
+.leikur strong { font-size: 1.05rem; }
+.leikur span { color: var(--muted); font-size: 0.9rem; }
+.leikur em { font-style: normal; font-size: 0.85rem; color: var(--accent); min-height: 1.2em; }
+
+.val-flokka {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.val-flokka label { display: inline-flex; align-items: center; gap: 6px; margin: 4px 14px 4px 0; }
+
+/* ---------- Leikur ---------- */
+
+.status { display: flex; justify-content: space-between; color: var(--muted); font-weight: 600; }
+.progress { height: 6px; background: var(--border); border-radius: 3px; margin: 8px 0 16px; overflow: hidden; }
+#progress-bar { height: 100%; background: var(--accent); width: 0; transition: width 0.25s; }
+
+.spurning { font-size: 1.2rem; font-weight: 600; text-align: center; margin: 8px 0 12px; }
+
+.merki-stort {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  background: var(--sign-bg);
+  border-radius: 16px;
+}
+.merki-stort.texti {
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.svor { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.svor.myndir { grid-template-columns: repeat(4, 1fr); }
+.svor button { text-align: left; min-height: 56px; display: flex; align-items: center; gap: 8px; }
+.svor button .k { font-size: 0.75rem; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 6px; flex: none; }
+.svor.myndir button { flex-direction: column; justify-content: center; padding: 10px; }
+.svor.myndir .mynd { width: 100%; max-width: 110px; aspect-ratio: 1; }
+.svor button.rett { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 600; }
+.svor button.rangt { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+.svor button:disabled { cursor: default; }
+
+@media (max-width: 520px) {
+  .svor { grid-template-columns: 1fr; }
+  .svor.myndir { grid-template-columns: 1fr 1fr; }
+  .merki-stort { width: 150px; height: 150px; }
+}
+
+.endurgjof { text-align: center; margin-top: 20px; }
+.verdict { font-size: 1.3rem; font-weight: 700; margin: 0 0 4px; }
+.verdict.ok { color: var(--ok); }
+.verdict.bad { color: var(--bad); }
+.detail { color: var(--text); margin: 0 0 14px; }
+
+/* ---------- Lok ---------- */
+
+.final-score { font-size: 2rem; font-weight: 700; text-align: center; margin: 8px 0; }
+#lokabest { text-align: center; }
+.villa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+.villa .mynd { width: 56px; height: 56px; flex: none; }
+.villa p { margin: 0; }
+.villa .ath { color: var(--muted); font-size: 0.9rem; }

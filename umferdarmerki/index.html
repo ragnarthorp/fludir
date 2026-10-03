@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Umferðarmerkin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>Umferðarmerkin</h1>
+      <p class="tagline">Lærðu flokkana og hvað merkin þýða – og prófaðu þig svo.</p>
+      <nav class="tabs" id="tabs">
+        <button data-tab="laera" class="active">Læra</button>
+        <button data-tab="leikir">Leikir</button>
+      </nav>
+    </header>
+
+    <!-- Læra -->
+    <section id="screen-laera" class="screen">
+      <h2>Lögun og litur segja mikið</h2>
+      <p class="hint">Merkjunum er skipt í flokka eftir hlutverki. Hver flokkur hefur sitt útlit, svo þú getur oft séð hvers konar merki þetta er áður en þú sérð táknið. Veldu flokk til að sjá merkin í honum og smelltu á merki til að lesa meira.</p>
+      <div class="flokkar" id="flokkar"></div>
+      <div id="flokkur-syn"></div>
+      <p class="hint small">Flokkunin fylgir reglugerð nr. 250/2024 um umferðarmerki og notkun þeirra (tók gildi 1. mars 2024). Merkjanúmer eru aðeins sýnd þar sem þau hafa verið staðfest. Í eldri kennsluefni eru flokkarnir merktir með bókstöfum. Myndirnar eru einfaldaðar teikningar – útlit raunverulegra merkja getur verið örlítið annað.</p>
+    </section>
+
+    <!-- Leikir: val -->
+    <section id="screen-leikir" class="screen hidden">
+      <h2>Veldu leik</h2>
+      <div class="leikir" id="leikjaval">
+        <button class="leikur" data-leikur="flokkur">
+          <strong>Hvaða flokkur?</strong>
+          <span>Þú sérð merki og velur í hvaða flokki það er.</span>
+          <em id="best-flokkur"></em>
+        </button>
+        <button class="leikur" data-leikur="merking">
+          <strong>Hvað þýðir merkið?</strong>
+          <span>Þú sérð merki og velur rétta merkingu.</span>
+          <em id="best-merking"></em>
+        </button>
+        <button class="leikur" data-leikur="finna">
+          <strong>Finndu merkið</strong>
+          <span>Þú sérð heiti og velur rétta merkið af fjórum.</span>
+          <em id="best-finna"></em>
+        </button>
+        <button class="leikur" data-leikur="blandad">
+          <strong>Blandað próf</strong>
+          <span>Allar spurningagerðir í bland.</span>
+          <em id="best-blandad"></em>
+        </button>
+      </div>
+
+      <fieldset class="val-flokka">
+        <legend>Flokkar í leiknum</legend>
+        <div id="val-flokka"></div>
+      </fieldset>
+
+      <div class="row">
+        <label>Fjöldi spurninga
+          <select id="fjoldi">
+            <option>10</option>
+            <option selected>20</option>
+            <option>30</option>
+            <option value="0">Öll merkin</option>
+          </select>
+        </label>
+      </div>
+      <p class="hint" id="val-info"></p>
+    </section>
+
+    <!-- Leikur í gangi -->
+    <section id="screen-leikur" class="screen hidden">
+      <div class="status">
+        <span id="framvinda"></span>
+        <span id="stig"></span>
+      </div>
+      <div class="progress"><div id="progress-bar"></div></div>
+
+      <p class="spurning" id="spurning"></p>
+      <div class="merki-stort" id="merki-stort"></div>
+      <div class="svor" id="svor"></div>
+
+      <div id="endurgjof" class="endurgjof hidden">
+        <p id="dómur" class="verdict"></p>
+        <p id="skyring" class="detail"></p>
+        <button class="primary" id="btn-naesta">Næsta <kbd>Enter</kbd></button>
+      </div>
+      <button class="link" id="btn-haetta">Hætta</button>
+    </section>
+
+    <!-- Lok -->
+    <section id="screen-lok" class="screen hidden">
+      <h2>Leik lokið</h2>
+      <p class="final-score" id="lokastig"></p>
+      <p class="hint" id="lokabest"></p>
+      <div id="villur"></div>
+      <div class="row center">
+        <button class="primary" id="btn-aefa-villur">Æfa villurnar</button>
+        <button class="primary" id="btn-aftur">Spila aftur</button>
+        <button id="btn-val">Velja annan leik</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Nánar um merki -->
+  <dialog id="nanar">
+    <div class="nanar-merki" id="nanar-merki"></div>
+    <p class="nanar-flokkur" id="nanar-flokkur"></p>
+    <h3 id="nanar-heiti"></h3>
+    <p id="nanar-lysing"></p>
+    <form method="dialog"><button class="primary">Loka</button></form>
+  </dialog>
+
+  <script src="merki.js"></script>
+  <script src="leikur.js"></script>
+</body>
+</html>
